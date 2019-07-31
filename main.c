@@ -10,12 +10,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define SIZE 50
+
 //if the charecter is a capital letter returns lowercase
 void isCapital(char *letter)
 {
     if(*letter <= 90 && *letter >= 65)
         *letter=*letter+32;
 }
+
 
 // check the character is between in a-z --- a boolean function
 int isInSide(char *letter)
@@ -25,6 +28,7 @@ int isInSide(char *letter)
     else
         return 0;
 }
+
 
 //change the value of character for direction if value break the limits if states keep the value within limits
 //direction == 1 >> +
@@ -45,7 +49,6 @@ void floating(char *letter,int value,int direction)
             *letter=*letter+26;
     }
 }
-
 
 
 void kripto(char string[], int value,int direction)
@@ -70,6 +73,9 @@ void kripto(char string[], int value,int direction)
         }
     }
 }
+
+
+//for solving encrypted text
 void rekripto(char string[], int value,int direction)
 {
     if (direction==1)
@@ -79,22 +85,34 @@ void rekripto(char string[], int value,int direction)
         kripto(string, value, 1);
 }
 
+void possibleVariations(char string[])
+{
+    char variant[SIZE];
+    strcpy(variant, string);//variant=string;
+    for (int i=1; i<26; i++)
+    {
+        rekripto(variant, 1, 1);
+        printf("Variant %d= %s\n",i,variant);
+    }
+}
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    char word[50]="ali";
+    char word[SIZE]="ali";
+    int value=1;
+    int direction=1;
     //scanf("%[^\n]",word);
     
     
     printf("işlemden önce yazı: %s\n",word);
     
-    kripto(word,1,1);
+    kripto(word,value,direction);
     
     printf("işlemden sonra yazı: %s\n",word);
     
-    rekripto(word, 1, 2);
+    possibleVariations(word);
     
-    printf("rekripto: %s\n",word);
     
     return 155;
 }

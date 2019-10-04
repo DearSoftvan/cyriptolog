@@ -126,6 +126,7 @@ int main(int argc, const char * argv[]) {
     return 155;
 }
 
+//add menu
 // If you want calculate size of string you can copy this function
 /*
  int calculateSize(char string[])
